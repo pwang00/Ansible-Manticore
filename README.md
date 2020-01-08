@@ -89,4 +89,5 @@ The first command executes the default Ansible playbook in `.mcore_config`, whic
 
 ### Known issues
 * Sometimes if the SSH service on the droplet times out, a permission denied error will occur when re-running the `digitalocean.yml` script.  To solve this issue, run `ansible-playbook reset_ssh_key.yml -vv` to reset the SSH key on the server.  As an additional restriction, the `ssh_key_name` field in `vars/droplet.yml` must be unique per user.
+* When resources run out on a remote droplet, the remote provisioning playbook tends to fail either when installing pip (unable to fork), or get stuck live-streaming logs during manticore analysis.  The only known fixes for this are to reboot the droplet or kill any unnecessary tasks on the droplet.
 * Real-time logging really only works well if the script being run takes a long time to complete and outputs a large amount of data to stdout.  As of now, there doesn't seem to be a way to increase the log output rate, but this may change in the future.
