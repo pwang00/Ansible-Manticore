@@ -75,7 +75,7 @@ Specify the `--remote` flag for `mcorepv` to provision a DigitalOcean instance a
 * `mcorepv --remote <contract_to_analyze> contract.sol --txaccount attacker`
 * `mcorepv --remote --destroy`
 
-The first command executes the default Ansible playbook in `.mcore_config`, which provisions a DigitalOcean droplet runs a Manticore python script in the cloud.  The second command executes the tasks in a custom playbook.  The third and fourth commands demonstrate verbosity configuration and the passing of known flags to Manticore on the remote droplet.  The last command tears down a previously provisioned droplet by running the `tear_down_instance.yml` playbook .in `.mcore_config`.
+The first command executes the default Ansible playbook in `.mcore_config`, which provisions a DigitalOcean droplet runs a Manticore python script in the cloud.  The second command executes the tasks in a custom playbook.  The third and fourth commands demonstrate verbosity configuration and the passing of known flags to Manticore on the remote droplet.  The last command tears down a previously provisioned droplet by running the `tear_down_instance.yml` playbook in `.mcore_config`.
 
 
 ### Notes / recommendations
