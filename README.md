@@ -34,7 +34,7 @@ Below is a description of all variables necessary for configuration.
 
 (Warning: very rough and experimental)
 
-* Run `pip3 install ansible "dopy>=0.3.7"` (currently uses digital_ocean which is meant to only be compatible with python2, but with a bit of tweaking can be made compatible with python3.  See Notes / Recommendations for more details.)
+* Run `pip3 install ansible "git+https://github.com/pwang00/dopy.git"` (currently uses digital_ocean which is meant to only be compatible with python2, but with a bit of tweaking can be made compatible with python3.  See Notes / Recommendations for more details.)
 * Generate an SSH key via `ssh-keygen -t <key_type_here>`(stored in ~/.ssh/)
 * Define an environment variable `DO_TOKEN` that holds the DigitalOcean API token in plaintext; (e.g. on Ubuntu run `export DO_TOKEN=<your_api_key_in_hexadecimal>`)
 * Navigate to `vars/`
@@ -79,7 +79,7 @@ The first command executes the default Ansible playbook in `.mcore_config`, whic
 
 
 ### Notes / recommendations
-* The current Ansible playbooks use the digital_ocean module, which was originally developed in python 2.  As such, when installing dopy via `pip3`, a `basestr` is not defined error will occur.  To fix this, open `~/.local/lib/python3.7/site-packages/dopy/manager.py` and change all occurrences of `basestr` to `str`. 
+* The last working release of dopy (0.3.7) only supports Python 2 and lower due to `basestr` being removed in Python 3. As such, I made a fork of `https://github.com/Wiredcraft/dopy` and changed instances of `basestr` to `str` in `dopy/manager.py.`  This makes it possible to directly supply the URL of a working Python 3-compatible fork as a pip argument.
 * As of Ansible 2.8, another module `digital_ocean_droplet` has been added, which does not require a prior `pip3 install`.  However, it has only one page of documentation (i.e. relatively poor support) and from what I've seen, is bug-ridden and error-prone. 
 
 ### Areas of improvement
